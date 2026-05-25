@@ -7,22 +7,9 @@
         <DatePicker name="date" showTime showIcon fluid iconDisplay="input" />
         <label>Дата и время поступления</label>
       </FloatLabel>
-      <FloatLabel style="width: 40%" variant="on">
-        <label>Центр временного содержания</label>
-        <InputText name="name" class="custom-input" type="text" fluid />
-        <Message
-          style="position: fixed"
-          v-if="formSlot.name?.invalid"
-          severity="error"
-          size="small"
-          variant="simple"
-        >{{ formSlot.name.error?.message }}</Message
-        >
-      </FloatLabel>
-      <FloatLabel style="width: 30%" variant="on">
-        <label>Номер дела</label>
-        <InputText name="caseNumber" class="custom-input" type="text" fluid />
-      </FloatLabel>
+
+      <FormInput name="name" label="Центр временного содержания" width="40%" :formSlot="formSlot" />
+      <FormInput name="caseNumber" label="Номер дела" width="30%" :formSlot="formSlot" />
     </div>
 
     <div class="row">
@@ -39,46 +26,31 @@
     <div class="title">Доставил несовершеннолетнего</div>
 
     <div class="row">
-      <FloatLabel style="width: 25%" variant="on">
-        <label>Фамилия</label>
-        <InputText name="caseNumber" class="custom-input" type="text" fluid />
-      </FloatLabel>
-      <FloatLabel style="width: 25%" variant="on">
-        <label>Имя</label>
-        <InputText name="caseNumber" class="custom-input" type="text" fluid />
-      </FloatLabel>
-      <FloatLabel style="width: 25%" variant="on">
-        <label>Отчество</label>
-        <InputText name="caseNumber" class="custom-input" type="text" fluid />
-      </FloatLabel>
-      <Button label="Выбрать из справочника" icon="pi pi-search" style="width: 25%" severity="info"/>
+      <FormInput name="test" label="Фамилия" width="25%" :formSlot="formSlot" />
+      <FormInput name="test" label="Имя" width="25%" :formSlot="formSlot" />
+      <FormInput name="test" label="Отчество" width="25%" :formSlot="formSlot" />
+      <Button
+        label="Выбрать из справочника"
+        icon="pi pi-search"
+        style="width: 25%"
+        severity="info"
+      />
     </div>
 
     <div class="row">
-      <FloatLabel style="width: 24%" variant="on">
-        <label>Фамилия</label>
-        <InputText name="caseNumber" class="custom-input" type="text" fluid />
-      </FloatLabel>
-      <FloatLabel style="width: 24%" variant="on">
-        <label>Имя</label>
-        <InputText name="caseNumber" class="custom-input" type="text" fluid />
-      </FloatLabel>
-      <FloatLabel style="width: 24%" variant="on">
-        <label>Отчество</label>
-        <InputText name="caseNumber" class="custom-input" type="text" fluid />
-      </FloatLabel>
+      <FormInput name="test" label="Звание" width="33%" :formSlot="formSlot" />
+      <FormInput name="test" label="Должность" width="33%" :formSlot="formSlot" />
+      <FormInput name="test" label="Номер телефона" width="33%" :formSlot="formSlot" />
     </div>
   </div>
-
 </template>
 <script setup lang="ts">
 import FloatLabel from 'primevue/floatlabel';
 import DatePicker from 'primevue/datepicker';
-import InputText from 'primevue/inputtext';
-import Message from 'primevue/message';
 import Select from 'primevue/select';
 import { ref } from 'vue';
 import type { Form } from '@primevue/forms';
+import FormInput from '@/components/FormInput.vue';
 
 // 1. Извлекаем типы всех слотов компонента Form
 type FormSlots = InstanceType<typeof Form>['$slots'];
@@ -104,12 +76,12 @@ const cities = ref([
   border-color: #1d6da8;
 }
 
-.custom-input {
+/*.custom-input {
   border-color: #999;
 }
 .custom-input:enabled:focus {
   border-color: #1d6da8;
-}
+}*/
 
 :deep(.p-floatlabel label) {
   font-family: 'PT_Sans Bold', sans-serif;
@@ -121,6 +93,7 @@ const cities = ref([
 :deep(.p-floatlabel-on:has(.p-inputwrapper-focus) label) {
   color: black;
   font-size: 14px;
+  font-family: 'PT_Sans Bold', sans-serif;
 }
 
 .custom-select {
@@ -133,16 +106,5 @@ const cities = ref([
 
 :deep(.p-select:not(.p-disabled).p-focus) {
   border-color: #1d6da8;
-}
-
-:deep(.p-floatlabel:has(.p-inputwrapper-filled) label) {
-  color: black;
-  font-family: 'PT_Sans Bold', sans-serif;
-  font-size: 14px;
-}
-.title {
-  font-size: 16px;
-  font-family: 'PT_Sans Bold', sans-serif;
-  text-transform: uppercase;
 }
 </style>

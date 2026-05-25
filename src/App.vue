@@ -18,8 +18,8 @@ interface SubType {
 }
 
 const subTypeVar: SubType = {
-  name: 'Alex',
-  age: '24',
+  name: '',
+  age: '',
   address: '',
 };
 

@@ -48,4 +48,10 @@ body {
   gap: 16px;
 }
 
+.title {
+  font-size: 16px;
+  font-family: 'PT_Sans Bold', sans-serif;
+  text-transform: uppercase;
+  color: black;
+}
 

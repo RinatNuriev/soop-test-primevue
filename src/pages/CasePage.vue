@@ -24,14 +24,13 @@
           <SecondTab />
         </TabPanel>
         <TabPanel value="2">
-          <div class="column">
-            <div class="row">
-              <ThirdTab />
-            </div>
-          </div>
+          <ThirdTab />
         </TabPanel>
       </TabPanels>
-      <Button style="position: fixed; bottom: 40px" type="submit" severity="info" label="Submit" />
+      <div style="position: fixed; bottom: 40px; display: flex; align-items: center; gap: 10px">
+        <Button type="submit" severity="info" label="Сохранить" />
+        <Button severity="secondary" label="Закрыть без сохранения" outlined />
+      </div>
     </Form>
   </Tabs>
 </template>
@@ -65,17 +64,28 @@ const toast = useToast();
 
 const resolver = ref(({ values }: FormResolverOptions) => {
   // console.log('values', values);
-  const errors = <{ name: { message: string }[]; surname: { message: string }[] }>{
+  const errors = <
+    {
+      name: { message: string }[];
+      surname: { message: string }[];
+      caseNumber: { message: string }[];
+    }
+  >{
     name: [{ message: '' }],
-    surname: [],
+    surname: [{ message: '' }],
+    caseNumber: [{ message: '' }],
   };
 
   if (!values.name) {
-    errors.name = [{ message: 'Username is required.' }];
+    errors.name = [{ message: 'required' }];
   }
 
   if (!values.surname) {
-    errors.surname = [{ message: 'Username is required.' }];
+    errors.surname = [{ message: 'required' }];
+  }
+
+  if (!values.caseNumber) {
+    errors.caseNumber = [{ message: 'required' }];
   }
 
   return {
@@ -89,11 +99,26 @@ const onFormSubmit = ({ valid, values }: FormSubmitEvent) => {
   console.log('valid', valid);
   if (!valid) {
     if (!values.name) {
-      toast.add({ severity: 'error', detail: 'Поле Имя не должно быть пустым', life: 3000 });
-    }
-    if (!values.surname) {
-      console.log('here', values.surname);
-      toast.add({ severity: 'error', detail: 'Поле Фамилия не должно быть пустым', life: 3000 });
+      toast.add({
+        severity: 'error',
+        summary: 'Error',
+        detail: 'Поле не должно быть пустым',
+        life: 3000,
+      });
+    } else if (!values.surname) {
+      toast.add({
+        severity: 'error',
+        summary: 'Error',
+        detail: 'Поле не должно быть пустым',
+        life: 3000,
+      });
+    } else if (!values.caseNumber) {
+      toast.add({
+        severity: 'error',
+        summary: 'Error',
+        detail: 'Поле не должно быть пустым',
+        life: 3000,
+      });
     }
   }
 };
