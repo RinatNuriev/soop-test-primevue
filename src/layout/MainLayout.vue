@@ -73,7 +73,7 @@ const router = useRouter();
   min-height: 60px;
 
   background: var(--main-bg-color);
-  background-image: url('public/gerb_bg.png');
+  background-image: url('../assets/gerb_bg.png');
   background-repeat: no-repeat;
   background-position: left 30px top 0;
   background-size: 286px auto;
