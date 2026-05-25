@@ -80,10 +80,6 @@ const resolver = ref(({ values }: FormResolverOptions) => {
     errors.name = [{ message: 'required' }];
   }
 
-  if (!values.surname) {
-    errors.surname = [{ message: 'required' }];
-  }
-
   if (!values.caseNumber) {
     errors.caseNumber = [{ message: 'required' }];
   }
@@ -99,13 +95,6 @@ const onFormSubmit = ({ valid, values }: FormSubmitEvent) => {
   console.log('valid', valid);
   if (!valid) {
     if (!values.name) {
-      toast.add({
-        severity: 'error',
-        summary: 'Error',
-        detail: 'Поле не должно быть пустым',
-        life: 3000,
-      });
-    } else if (!values.surname) {
       toast.add({
         severity: 'error',
         summary: 'Error',

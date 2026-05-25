@@ -46,7 +46,7 @@
 import { ref, shallowRef } from 'vue';
 import Menu from 'primevue/menu';
 // import PanelMenu from 'primevue/panelmenu';
-import { useRoute, useRouter } from 'vue-router';
+import { useRouter } from 'vue-router';
 import LandmarkIcon from '@/icons/LandmarkIcon.vue';
 import CardIcon from '@/icons/CardIcon.vue';
 import LockIcon from '@/icons/LockIcon.vue';
@@ -54,7 +54,6 @@ import ChartareaIcon from '@/icons/ChartareaIcon.vue';
 import BellIcon from '@/icons/BellIcon.vue';
 
 const router = useRouter();
-const route = useRoute();
 
 const sidebarCollapsed = ref(false);
 
