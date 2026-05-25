@@ -78,11 +78,15 @@ import InputText from 'primevue/inputtext';
 import Message from 'primevue/message';
 import Select from 'primevue/select';
 import { ref } from 'vue';
-import type { FormFieldState } from '@primevue/forms';
+import type { Form } from '@primevue/forms';
 
-const { formSlot } = defineProps<{ formSlot: FormFieldState }>();
+// 1. Извлекаем типы всех слотов компонента Form
+type FormSlots = InstanceType<typeof Form>['$slots'];
+type FormSlotState = NonNullable<Parameters<NonNullable<FormSlots['default']>>[0]>;
 
-const selectedCity = ref();
+const { formSlot } = defineProps<{ formSlot: FormSlotState }>();
+
+// const selectedCity = ref();
 const cities = ref([
   { name: 'Приговор суда', code: '1' },
   { name: 'постановление судьи', code: '2' },

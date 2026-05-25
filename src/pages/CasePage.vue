@@ -47,22 +47,23 @@ import FirstTab from '@/components/FirstTab.vue';
 import SecondTab from '@/components/SecondTab.vue';
 import ThirdTab from '@/components/ThirdTab.vue';
 import { ref } from 'vue';
+import { type FormSubmitEvent, type FormResolverOptions } from '@primevue/forms';
 
 const toast = useToast();
 
-type DataType = {
-  date: string;
-  name: string;
-  surname: string;
-  middlename: string;
-  caseNumber: string;
-  gender: {
-    code: string;
-    name: string;
-  };
-};
+// type DataType = {
+//   date: string;
+//   name: string;
+//   surname: string;
+//   middlename: string;
+//   caseNumber: string;
+//   gender: {
+//     code: string;
+//     name: string;
+//   };
+// };
 
-const resolver = ref(({ values }: { values: DataType }) => {
+const resolver = ref(({ values }: FormResolverOptions) => {
   // console.log('values', values);
   const errors = <{ name: { message: string }[]; surname: { message: string }[] }>{
     name: [{ message: '' }],
@@ -83,10 +84,9 @@ const resolver = ref(({ values }: { values: DataType }) => {
   };
 });
 
-const onFormSubmit = ({ valid, values }: { valid: boolean; values: DataType }) => {
+const onFormSubmit = ({ valid, values }: FormSubmitEvent) => {
   console.log('values', values);
   console.log('valid', valid);
-  console.log('typeof date', typeof values.date);
   if (!valid) {
     if (!values.name) {
       toast.add({ severity: 'error', detail: 'Поле Имя не должно быть пустым', life: 3000 });
@@ -98,6 +98,7 @@ const onFormSubmit = ({ valid, values }: { valid: boolean; values: DataType }) =
   }
 };
 </script>
+
 <style scoped>
 .custom-tablist {
   background: #d9e2ec;
