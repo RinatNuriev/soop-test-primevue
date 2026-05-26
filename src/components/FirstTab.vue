@@ -83,7 +83,7 @@ const cities = ref([
   border-color: #1d6da8;
 }*/
 
-:deep(.p-floatlabel label) {
+/*:deep(.p-floatlabel label) {
   font-family: 'PT_Sans Bold', sans-serif;
   font-size: 14px;
 }
@@ -94,7 +94,7 @@ const cities = ref([
   color: black;
   font-size: 14px;
   font-family: 'PT_Sans Bold', sans-serif;
-}
+}*/
 
 .custom-select {
   border-color: #999;

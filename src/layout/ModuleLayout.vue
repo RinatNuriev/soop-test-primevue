@@ -131,6 +131,7 @@ const items = shallowRef([
   border-right: 1px solid rgba(0, 0, 0, 0.12);
   overflow-y: auto;
   background: white;
+  z-index: 99;
 }
 
 .sidebar.collapsed {

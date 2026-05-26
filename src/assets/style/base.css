@@ -1,6 +1,7 @@
 /* color palette from <https://github.com/vuejs/theme> */
 :root {
   --main-bg-color: #1d6da8;
+  --button-main-color: -webkit-linear-gradient(top, #2578b7, #015b9e);
 }
 
 
@@ -39,7 +40,7 @@ body {
 .column {
   display: flex;
   flex-direction: column;
-  gap: 25px;
+  gap: 26px;
 }
 
 .row {
@@ -53,5 +54,9 @@ body {
   font-family: 'PT_Sans Bold', sans-serif;
   text-transform: uppercase;
   color: black;
+}
+
+label {
+  color: black
 }
 

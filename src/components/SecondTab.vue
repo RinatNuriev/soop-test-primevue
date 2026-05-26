@@ -1,15 +1,27 @@
 <template>
-  <div class="column">
+  <div class="column" style="width: 70%">
+    <div class="img-container">
+      <Image :src="img" width="260" />
+      <div style="display: flex; gap: 6px; align-items: center">
+        <Button icon="pi pi-camera" disabled />
+        <Button icon="pi pi-trash" severity="secondary" outlined disabled />
+      </div>
+    </div>
+
     <div class="title">Анкетные данные несовершеннолетнего правонарушителя</div>
     <div class="row">
-      <FloatLabel style="width: 75%" variant="on">
+      <FloatLabel style="width: 65%" variant="on">
         <Select :options="cities" optionLabel="name" fluid class="custom-select" name="gender" />
         <label for="">Категория несовершеннолетнего</label>
       </FloatLabel>
       <Button
         label="Выбрать из справочника СООП"
         icon="pi pi-search"
-        style="width: 25%"
+        style="
+          width: 35%;
+          background: var(--button-main-color);
+          border-color: var(--button-main-color);
+        "
         severity="info"
       />
     </div>
@@ -82,13 +94,149 @@
         <RadioButton inputId="9" name="radioBtn3" value="9" disabled />
         <label for="9">Не состоял на учете в ПДН</label>
       </div>
-      <FormInput name="test" label="Примечание" width="40%" />
+    </div>
+    <FormInput name="test" label="Примечание" width="100%" />
+  </div>
+
+  <Divider style="margin: 13px 0" />
+
+  <div class="column">
+    <div style="display: flex; flex-direction: column; gap: 6px">
+      <div style="display: flex; align-items: center; gap: 12px">
+        <FloatLabel variant="on" style="width: 75%">
+          <Select :options="cities" optionLabel="name" fluid class="custom-select" name="gender" />
+          <label for="">Адрес регистрации</label>
+        </FloatLabel>
+
+        <Button severity="info" icon="pi pi-pencil" />
+        <Button severity="info" icon="pi pi-plus" />
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 12px">
+        <Checkbox inputId="isAddressEmpty" name="isAddressEmpty" value="true" />
+        <label for="isAddressEmpty"> Адрес регистрации отсутствует </label>
+      </div>
     </div>
 
-    <!--    <FloatLabel variant="in" style="width: 100%">-->
-    <!--      <label>Фамилия</label>-->
-    <!--      <InputText name="surname" class="custom-input" type="text" fluid />-->
-    <!--    </FloatLabel>-->
+    <Button
+      icon="pi pi-arrow-circle-down"
+      severity="secondary"
+      label="Копировать"
+      outlined
+      style="width: 25%; background: #e8e8e8"
+    />
+
+    <div style="display: flex; flex-direction: column; gap: 6px">
+      <div style="display: flex; align-items: center; gap: 12px">
+        <FloatLabel variant="on" style="width: 75%">
+          <Select :options="cities" optionLabel="name" fluid class="custom-select" name="gender" />
+          <label for="">Фактический адрес проживания</label>
+        </FloatLabel>
+
+        <Button
+          severity="info"
+          icon="pi pi-pencil"
+          style="background: var(--button-main-color); border-color: var(--button-main-color)"
+        />
+        <Button
+          severity="info"
+          icon="pi pi-plus"
+          style="background: var(--button-main-color); border-color: var(--button-main-color)"
+        />
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 12px">
+        <Checkbox inputId="checkbox1" name="isAddressEmpty" value="true" />
+        <label for="checkbox1"> Лицо без определенного места жительства </label>
+      </div>
+    </div>
+
+    <div class="row">
+      <div style="display: flex; align-items: center; gap: 12px; width: 30%">
+        <RadioButton inputId="10" name="radioBtn3" value="10" />
+        <label for="10">Проживает в данном субъекте РФ</label>
+      </div>
+      <div style="display: flex; align-items: center; gap: 12px; width: 30%">
+        <RadioButton inputId="11" name="radioBtn3" value="11" />
+        <label for="11">Не проживает в данном субъекте РФ</label>
+      </div>
+    </div>
+
+    <div class="row">
+      <FloatLabel style="width: 33%" variant="on">
+        <DatePicker name="date2" showIcon fluid iconDisplay="input" />
+        <label>Когда прибыл</label>
+      </FloatLabel>
+
+      <FormInput name="test" label="Откуда прибыл" width="33%" />
+
+      <div style="display: flex; align-items: center; gap: 12px">
+        <Checkbox inputId="checkbox2" name="isAddressEmpty" value="true" />
+        <label for="checkbox2"> Другое государство </label>
+      </div>
+    </div>
+
+    <FloatLabel variant="on" style="width: 85%">
+      <Textarea name="textarea" rows="5" cols="30" fluid />
+      <label for="checkbox2"> Причина прибытия. Дополнительные сведения </label>
+    </FloatLabel>
+
+    <div class="row">
+      <div style="display: flex; align-items: center; gap: 12px; width: 30%">
+        <Checkbox inputId="checkbox2" name="isAddressEmpty" value="true" />
+        <label for="checkbox2"> Работающий </label>
+      </div>
+      <div style="width: 100%; display: flex; align-items: center; gap: 12px">
+        <FloatLabel style="width: 50%" variant="on">
+          <Select :options="cities" optionLabel="name" fluid class="custom-select" name="gender" />
+          <label for="">Место работы</label>
+        </FloatLabel>
+        <Button severity="info" icon="pi pi-plus" />
+      </div>
+    </div>
+
+    <div class="row">
+      <div style="display: flex; align-items: center; gap: 12px; width: 30%">
+        <Checkbox inputId="checkbox2" name="isAddressEmpty" value="true" />
+        <label for="checkbox2"> Учащийся </label>
+      </div>
+      <div style="width: 100%; display: flex; align-items: center; gap: 12px">
+        <FloatLabel style="width: 50%" variant="on">
+          <Select :options="cities" optionLabel="name" fluid class="custom-select" name="gender" />
+          <label for="">Место учебы</label>
+        </FloatLabel>
+        <Button severity="info" icon="pi pi-plus" />
+      </div>
+    </div>
+
+    <div class="row">
+      <div style="display: flex; align-items: center; gap: 12px; width: 30%">
+        <Checkbox inputId="checkbox2" name="isAddressEmpty" value="true" />
+        <label for="checkbox2"> Не работающий и не учащийся </label>
+      </div>
+      <div style="width: 100%; display: flex; align-items: center; gap: 12px">
+        <FloatLabel style="width: 50%" variant="on">
+          <DatePicker name="date2" showIcon fluid iconDisplay="input" />
+        </FloatLabel>
+        <Button severity="info" icon="pi pi-plus" />
+      </div>
+    </div>
+
+    <div class="row">
+      <div style="display: flex; align-items: center; gap: 12px; ">
+        <Checkbox inputId="checkbox2" name="isAddressEmpty" value="true" />
+        <label for="checkbox2"> Проживает в семье, находящейся в социально опасном положении </label>
+      </div>
+      <div style="display: flex; align-items: center; gap: 12px; ">
+        <Checkbox inputId="checkbox2" name="isAddressEmpty" value="true" />
+        <label for="checkbox2"> Самовольно ушедший из дома </label>
+      </div>
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <Checkbox inputId="checkbox2" name="isAddressEmpty" value="true" />
+        <label for="checkbox2"> Находился в розыске </label>
+      </div>
+    </div>
+
   </div>
 </template>
 <script setup lang="ts">
@@ -98,6 +246,12 @@ import RadioButton from 'primevue/radiobutton';
 import { ref } from 'vue';
 import FormInput from '@/components/FormInput.vue';
 import InputNumber from 'primevue/inputnumber';
+import Checkbox from 'primevue/checkbox';
+import Image from 'primevue/image';
+import img from '../assets/img.png';
+import Divider from 'primevue/divider';
+import DatePicker from 'primevue/datepicker';
+import Textarea from 'primevue/textarea';
 
 const cities = ref([
   { name: 'Приговор суда', code: '1' },
@@ -108,21 +262,6 @@ const cities = ref([
 </script>
 
 <style scoped>
-:deep(.p-inputtext) {
-  border-color: #999;
-}
-
-:deep(.p-inputtext:enabled:focus) {
-  border-color: #1d6da8;
-}
-
-.custom-input {
-  border-color: #999;
-}
-.custom-input:enabled:focus {
-  border-color: #1d6da8;
-}
-
 :deep(.p-floatlabel label) {
   font-family: 'PT_Sans Bold', sans-serif;
   font-size: 14px;
@@ -161,5 +300,37 @@ const cities = ref([
 :deep(.p-radiobutton-checked:not(.p-disabled):has(.p-radiobutton-input:hover) .p-radiobutton-box) {
   background: #1d6da8;
   border-color: #1d6da8;
+}
+
+.p-floatlabel-on:has(textarea:focus) label {
+  color: black;
+  font-family: 'PT_Sans Bold', sans-serif;
+  font-size: 14px;
+}
+
+.p-textarea {
+  border-color: #999;
+  &:enabled:focus {
+    border-color: #999;
+  }
+}
+
+:deep(.p-checkbox-checked .p-checkbox-box) {
+  border-color: #1d6da8;
+  background-color: #1d6da8;
+}
+
+:deep(.p-checkbox-checked:not(.p-disabled):has(.p-checkbox-input:hover) .p-checkbox-box) {
+  border-color: #1d6da8;
+  background-color: #1d6da8;
+}
+
+.img-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 </style>

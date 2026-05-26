@@ -1,15 +1,8 @@
 <template>
-  <div
-    style="
-      font-family: 'PT_Sans Bold', sans-serif;
-      font-size: 24px;
-      text-transform: uppercase;
-      margin: 0px 0px 16px;
-    "
-  >
-    Учетно-статистическое дело
-  </div>
+  <div class="title" style="font-size: 24px; margin: 0 0 16px">Учетно-статистическое дело</div>
+
   <Tabs value="0">
+
     <TabList class="custom-tablist">
       <Tab value="0">Поступление в ЦВСНП</Tab>
       <Tab value="1">Анкетные данные</Tab>
@@ -20,18 +13,19 @@
         <TabPanel value="0">
           <FirstTab :formSlot="$form" />
         </TabPanel>
-        <TabPanel value="1">
+        <TabPanel value="1" style="position: relative; padding-bottom: 60px;">
           <SecondTab />
         </TabPanel>
         <TabPanel value="2">
           <ThirdTab />
         </TabPanel>
       </TabPanels>
-      <div style="position: fixed; bottom: 40px; display: flex; align-items: center; gap: 10px">
+      <div style="position: fixed; bottom: 32px; right: 30px; display: flex; align-items: center; gap: 10px; background:  #f6f9fb; width: 100%; justify-content: right; padding: 5px 0;">
         <Button type="submit" severity="info" label="Сохранить" />
         <Button severity="secondary" label="Закрыть без сохранения" outlined />
       </div>
     </Form>
+
   </Tabs>
 </template>
 <script setup lang="ts">

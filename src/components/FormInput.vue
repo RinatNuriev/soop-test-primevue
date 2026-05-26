@@ -6,10 +6,10 @@
     }"
     variant="on"
   >
+    <InputText :name="name" :id="name" class="custom-input" type="text" fluid />
     <label :for="name">
       {{ label }}
     </label>
-    <InputText :name="name" :id="name" class="custom-input" type="text" fluid />
     <Message
       style="position: fixed"
       v-if="formSlot?.[name]?.invalid"
@@ -27,6 +27,7 @@ import FloatLabel from 'primevue/floatlabel';
 import InputText from 'primevue/inputtext';
 import Message from 'primevue/message';
 import type { Form } from '@primevue/forms';
+
 
 type FormSlots = InstanceType<typeof Form>['$slots'];
 type FormSlotState = NonNullable<Parameters<NonNullable<FormSlots['default']>>[0]>;
