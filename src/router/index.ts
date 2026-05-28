@@ -23,6 +23,11 @@ const router = createRouter({
               name: 'case',
               path: 'case',
               component: () => import('@/pages/CasePage.vue'),
+            },
+            {
+              name: 'cvsnp-journal',
+              path: 'cvsnp-journal',
+              component: () => import('@/pages/CvsnpJournalPage.vue')
             }
           ]
         }

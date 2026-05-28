@@ -66,6 +66,7 @@ const items = shallowRef([
   {
     label: 'Журнал содержащихся',
     customIcon: LockIcon,
+    command: () => router.push({ name: 'cvsnp-journal' }),
   },
   {
     label: 'ЦВСНП',
